@@ -1,0 +1,6 @@
+[{"id":1,"title":"naranja","description":30,"price":5,"thumbnail":34,"code":2},
+    {"id":2,"title":"melon","description":45,"price":5,"thumbnail":7,"code":9},
+    {"id":3,"title":"frutilla","description":30,"price":5,"thumbnail":34,"code":2},
+    {"id":4,"title":"sandia","description":45,"price":5,"thumbnail":7,"code":9},
+    {"id":6,"title":"mandarina","description":30,"price":5,"thumbnail":34,"code":2},
+    {"id":5,"title":"manzana","description":45,"price":5,"thumbnail":7,"code":9}]
