@@ -97,4 +97,4 @@ class ProductManager {
   }
 
   // exporto el product manager para usarlo en app,
-  export default ProductManager 
+  export default ProductManager

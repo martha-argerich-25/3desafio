@@ -1,5 +1,5 @@
 import express from "express"
-import ProductManager from "./ProductManager"
+import ProductManager from "./ProductManager.js"
 const manager = new ProductManager
 const app = express();
 
@@ -11,7 +11,7 @@ app.get("/product",async(req,res)=>{
   const products = await manager.getProducts();
 const {limit} = req.query
 //para que devuelva la cantidad de productos que hay
-if(limit <= 10){
+if(limit === number){
 return res.send(products.length)
 } 
 
