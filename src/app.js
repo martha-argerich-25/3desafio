@@ -10,29 +10,29 @@ app.get("/products", async (req,res) => {
   const {limit} = req.query;
 
   if(!limit){
-     const prods = await manager.getProducts(); 
-     await res.send(prods);
+     const products = await manager.getProducts(); 
+     return res.send(products);
   }
   
-  const prods = await manager.getProducts();
-  const filtered = prods.splice(0,limit);
-  await res.send(filtered);
+  const filtered =  products.splice(0,limit);
+
+   return res.send(filtered);
 });
 
 
 
 
 //DEVUELVE LOS PRODUCTOS POR ID
-app.get("/products/:id", async (req,res)=>{
 
-  const products = await manager.getProducts();
+app.get('/products/:id', (req, res) => {
+  const {id} = req.params
 
-  const {id} = req.params;
+  const num =  parseInt(id)
+   res.json(manager.getProducts(num))
+  
 
-const productId = await products.find ((p)=> p.id=== id)
-
-res.send(productId)
-});
+  
+})
  
 
 
