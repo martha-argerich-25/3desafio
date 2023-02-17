@@ -1,41 +1,39 @@
 import express from "express"
 import ProductManager from "./ProductManager.js"
-
-const manager = new ProductManager
+const manager = new ProductManager();
 const app = express();
 
 
 
 // DEVUELVE LOS PRODUCTOS//
-app.get("./products",async (req,res)=>{
+app.get("/products", async (req,res) => {
+  const {limit} = req.query;
 
-  const products = await manager.getProducts();
-
-  const {limit} = req.query
-  if(limit === Number){
-    res.send(products.lenght)
+  if(!limit){
+     const prods = await manager.getProducts(); 
+     await res.send(prods);
   }
-
- 
-//para que devuelva la cantidad de productos que hay
-
-
+  
+  const prods = await manager.getProducts();
+  const filtered = prods.splice(0,limit);
+  await res.send(filtered);
 });
 
 
+
+
 //DEVUELVE LOS PRODUCTOS POR ID
-app.get("./products/:id", async (req,res)=>{
-  
+app.get("/products/:id", async (req,res)=>{
+
+  const products = await manager.getProducts();
+
   const {id} = req.params;
 
 const productId = await products.find ((p)=> p.id=== id)
 
 res.send(productId)
-})
+});
  
-
-
-
 
 
 // ESCUCHA LA LLAMADA
