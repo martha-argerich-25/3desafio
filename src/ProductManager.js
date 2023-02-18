@@ -2,34 +2,34 @@ import fs from "fs"
 
 
 class ProductManager {
-    #path = "./productos.json";
+           #path = "./productos.json"
   
     constructor(path){
    this.#path = path
     }
   
   // METODO PARA CREAR PRODUCTO//
-    async addProduct(id,title, description, price, thumbnail,code,stock) {
-      const newProduct = {
-        id: id.length,
-          title : title,
-          description: description,
-           price : price,
-           thumbnail :  thumbnail,
-          code:code,
-           stock :stock
-      };
-  
-  
-  
-  // consultar los producto
-      const products = await this.getProducts();
-  // desestructuro y agrego el nuevo producto
-  
-      const updateProducts = [...products, newProduct];
-  // escribo los usuarios actualizados
-      await fs.promises.writeFile(this.#path, JSON.stringify(updateProducts));
-    }
+  async addProduct(id,title, description, price, thumbnail,code,stock) {
+    const newProduct = {
+      id: id.length,
+        title : title,
+        description: description,
+         price : price,
+         thumbnail :  thumbnail,
+        code:code,
+         stock :stock
+    };
+
+
+
+// consultar los producto
+    const products = await this.getProducts();
+// desestructuro y agrego el nuevo producto
+
+    const updateProducts = [...products, newProduct];
+// escribo los usuarios actualizados
+    await fs.promises.writeFile(this.#path, JSON.stringify(updateProducts));
+  }
   
   
   // ----------------------METODO GETPRODUCT ---------------------------
@@ -97,5 +97,6 @@ class ProductManager {
   }
 
   // exporto el product manager para usarlo en app,
+
   
   export default ProductManager;

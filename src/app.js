@@ -1,6 +1,7 @@
 import express from "express"
 import ProductManager from "./ProductManager.js"
-const manager = new ProductManager();
+
+const manager = new ProductManager("./productos.json");
 const app = express();
 
 
@@ -13,7 +14,7 @@ app.get("/products", async (req,res) => {
      const products = await manager.getProducts(); 
      return res.send(products);
   }
-  
+  const products = await manager.getProducts()
   const filtered =  products.splice(0,limit);
 
    return res.send(filtered);
@@ -21,18 +22,18 @@ app.get("/products", async (req,res) => {
 
 
 
-
 //DEVUELVE LOS PRODUCTOS POR ID
 
-app.get('/products/:id', (req, res) => {
-  const {id} = req.params
 
-  const num =  parseInt(id)
-   res.json(manager.getProducts(num))
-  
-
-  
-})
+app.get('/products/:id',async (req, res) => {
+   const {id} = req.params
+ 
+   const num = parseInt(id)
+    res.json( await manager.getProducts(num))
+   
+ 
+   
+ })
  
 
 
