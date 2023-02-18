@@ -25,11 +25,11 @@ app.get("/products", async (req,res) => {
 //DEVUELVE LOS PRODUCTOS POR ID
 
 
-app.get('/products/:id',async (req, res) => {
+app.get('/products/:id',(req, res) => {
    const {id} = req.params
  
    const num = parseInt(id)
-    res.json( await manager.getProducts(num))
+    res.json (  manager.getProducts(num))
    
  
    
