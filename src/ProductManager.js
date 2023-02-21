@@ -48,10 +48,10 @@ class ProductManager {
   //-------------------METODO GETPRODUCTBYID-----------------------------------
   async getProductById(id) {        // Producto por ID
     const prod = await this.getProducts();
-    let productget = prod.find((x) => x.id === id);
+    let productget = prod.find((p) => p.id === id);
     if (productget) {
       await fs.promises.readFile(this.#path,"utf-8");
-        return console.log(productget);
+        return (productget);
     } else {
         throw new Error(`no se encuentra id`);
     }
@@ -96,7 +96,6 @@ class ProductManager {
     }
   }
 
-  // exporto el product manager para usarlo en app,
 
-  
+
   export default ProductManager;
